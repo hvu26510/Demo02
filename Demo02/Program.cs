@@ -4,11 +4,14 @@ using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddControllers();
 //add db context
 builder.Services.AddDbContext<QLSPDbContext>(option => option.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
+
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddControllers();
+
 builder.Services.AddSwaggerGen();
 
 // Add services to the container.
